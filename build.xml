@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="angJsApp" default="war">
+    
+    <!-- Create the WAR File -->
+    <target name="war" depends="clean">
+        <echo>Building war file</echo>
+		<delete dir="build/**" />
+        <copy todir="build" includeEmptyDirs="false">
+            <fileset dir=".">
+                <include name="**/*" />
+				<exclude name="build/**" />
+                <exclude name="build.xml" />				
+            </fileset>
+        </copy>
+        
+        <!-- Create war file and place in ear directory -->
+        <jar destfile="build/angJsApp.war" basedir="build" />        
+    </target>
+	<target name="clean">
+        <echo>Cleaning all generated directories and files</echo>
+        <delete dir="build" />            
+    </target>
+</project>
+
